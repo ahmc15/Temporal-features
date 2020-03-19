@@ -42,7 +42,8 @@ for tempo = 2:NumFrames
     end
     %% average of the features with a gamma filter
     %cálculo das médias locais de cada direção
-    gamma_filter_mask = [0,0,1,2,1,0,0;0,3,13,22,13,3,0;1,13,59,97,59,13,1;2,22,97,159,97,22,2;1,13,59,97,59,13,1;0,3,13,22,13,3,0;0,0,1,2,1,0,0]./1003;
+    gamma_filter_mask = fspecial('gaussian',7,7/6)/;
+    gamma_filter_mask = gamma_filter_mask/sum(sum(gamma_filter_mask));
     Dmed_horizontal=imfilter(Dhorizontal,gamma_filter_mask);                 
     Dmed_vertical  =imfilter(Dvertical  ,gamma_filter_mask);
     Dmed_Dd1       =imfilter(Dd1        ,gamma_filter_mask);
