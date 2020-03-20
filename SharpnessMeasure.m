@@ -1,12 +1,14 @@
 function [ Sharpness_score ] = Sharpness(patch)
 %Calculates sharpness through the variance field of the image
-%  Detailed explanation goes here
+%  Detailed explanation goes here 
+%  
 %
 %
 if (nargin <1)
 error('First argument (patch) is required');    
 end
 [row, col] = size(patch);
+patch=double(patch);
 
 mean=[];
 variance=[];
@@ -19,7 +21,7 @@ mean = imfilter(patch, gamma_filter, 'replicate');
 mean_sq = mean.*mean;
 sigma = sqrt(abs(imfilter(patch_sq,gamma_filter, 'replicate')-mean_sq));
 
-
+Sharpness_score = sigma;
 
 end
 
