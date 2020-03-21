@@ -6,8 +6,10 @@ borderRows = rem(rows,96)/2;
 borderCols = rem(cols,96)/2;
 
 borderless = varianceField(borderRows+1:end-borderRows, borderCols+1:end-borderCols);
+[brows, bcols] = size(borderless);
 listNum =(size(borderless,1)*size(borderless,2)/(96*96));
 patchlist = zeros(96,96,listNum);
+
 % for j=(1:96:end)
 %     for i =(1:96:end)
 %         patch = (i:i+96,j:j+96);
@@ -17,10 +19,10 @@ patchlist = zeros(96,96,listNum);
 % end
 
 
-for n=(1:listNum)
-    for j=(1:96:end)
-        for i =(1:96:end)
-            patch = (i:i+96,j:j+96);
+for n=1:listNum
+    for j=1:96:brows-96
+        for i =1:96:bcols-96
+            patch = borderless(i:i+95,j:j+95);
             patchlist(:,:,n) = patch; 
         end
     end

@@ -3,11 +3,13 @@ function [ patchesTrue ] = patchThreshold( patchs )
 %   Detailed explanation goes here
 
 meanSigmaPatchs = mean(mean(patchs,2),1);
-threshold = 0.75;
+threshold = 0.75*max(max(max(meanSigmaPatchs,[],1),[],2),[],3);
 patchesTrue = zeros(96,96);
+
+
 for i=1:size(meanSigmaPatchs,3)
-    if meanSigmaPatchs>=threshold
-        patchesTrue = cat(3,patchesTrue,patchs(:,:,i));                
+    if meanSigmaPatchs(:,:,i)>=threshold
+        patchesTrue = cat(1,patchesTrue,patchs(:,:,i));                
     end    
 end
 patchesTrue = patchesTrue(97:end,:);
