@@ -5,7 +5,7 @@ function [ Sharpness_score ] = Sharpness(img)
 %
 %
 if (nargin <1)
-error('First argument (patch) is required');    
+    error('First argument (patch) is required');    
 end
 [row, col] = size(img);
 img=double(img);
