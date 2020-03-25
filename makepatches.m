@@ -3,7 +3,7 @@ function [ ArrayPatches ] = makepatches( varianceField )
 %   The function takes a variance field and return patches of size 96x96.
 %   Each patch is stored in the third dimension of the output.
 
-[rows cols] = size(varianceField);
+[rows, cols] = size(varianceField);
 borderRows = rem(rows,96)/2;
 borderCols = rem(cols,96)/2;
 
