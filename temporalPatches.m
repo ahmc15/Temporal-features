@@ -4,12 +4,12 @@ function [ differencePatches, meanPatches, variancePatches ] = temporalPatches( 
 
 
 
-[rows, cols] = size(varianceField)
+[rows, cols] = size(varianceField);
 difference = [zeros(1,size(difference,2));difference];
 meanLocal = [zeros(1,size(meanLocal,2));meanLocal];
 varianceField = [zeros(1,size(varianceField,2));varianceField];
 
-[rows, cols] = size(varianceField)
+[rows, cols] = size(varianceField);
 borderRows = rem(rows,96)/2;
 borderCols = rem(cols,96)/2;
 
