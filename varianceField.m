@@ -38,7 +38,7 @@ framedif = framedif(2:end,2:end-1);
 
 gamma_filter_mask = fspecial('gaussian',7,7/6);
 gamma_filter_mask = gamma_filter_mask./sum(sum(gamma_filter_mask));
-Media = imfilter(framedif, gamma_filter_mask);
+Media = imfilter(framedif, gamma_filter_mask,'replicate');
 sigma = sum(sum(((framedif-Media).^2),1),2);
 sigma = repmat(sigma, [nrows,ncol]);
 
