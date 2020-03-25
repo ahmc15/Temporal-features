@@ -19,26 +19,25 @@ borderlessVariance = varianceField(borderRows+1:end-borderRows, borderCols+1:end
 
 [brows, bcols] = size(borderlessVariance);
 listNum =(size(borderlessVariance,1)*size(borderlessVariance,2)/(96*96));
-differenceList = zeros(96,96,listNum);
-meanLocalList = zeros(96,96,listNum);
-varianceList = zeros(96,96,listNum);
+differenceList = zeros(96,96);
+meanLocalList = zeros(96,96);
+varianceList = zeros(96,96);
 patch = zeros(96,96);
-for n=1:listNum
-    for j=1:96:bcols-96
-        for i =1:96:brows-96
-            patch = borderlessDifference(i:i+95,j:j+95);
-            differenceList(:,:,n) = patch;
-            patch = borderlessMeanLocal(i:i+95,j:j+95);
-            meanLocalList(:,:,n) = patch; 
-            patch = borderlessVariance(i:i+95,j:j+95);
-            varianceList(:,:,n) = patch; 
-            
-        end
-    end    
-end
 
-differencePatches = differenceList;
-meanPatches = meanLocalList;
-variancePatches = varianceList;
+for j=1:96:bcols
+    for i =1:96:brows
+        patch = borderlessDifference(i:i+95,j:j+95);
+        differenceList = cat(3,differenceList,patch);
+        patch = borderlessMeanLocal(i:i+95,j:j+95);
+        meanLocalList = cat(3,meanLocalList,patch); 
+        patch = borderlessVariance(i:i+95,j:j+95);
+        varianceList = cat(3,varianceList ,patch); 
+    end
+end    
+
+
+differencePatches = differenceList(:,:,2:end);
+meanPatches = meanLocalList(:,:,2:end);
+variancePatches = varianceList(:,:,2:end);
 end
 
