@@ -19,7 +19,7 @@ Parametros_Dd2 = [];
 gam = 0.2:0.001:10;
 r_gam = gamma(1./gam).*gamma(3./gam)./(gamma(2./gam)).^2;
 
-for tempo = 2:NumFrames-1
+for tempo = 2:10 %NumFrames-1
     frameT = rgb2gray(read(video,tempo)); %frame atual
     frameT1= rgb2gray(read(video,tempo+1)); %frame t+1 futuro
     [nrows,ncol] = size(frameT); %dimensões dos frames
