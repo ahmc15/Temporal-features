@@ -1,6 +1,14 @@
 function [ differencePatches, meanPatches ] = temporalPatches( difference, meanLocal )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Divides the difference and mean matrices into 96x96 patches 
+%   INPUT
+%         difference: matrix of the difference based ona certain direction
+%         meanLocal: matrix of the local average of a 7x7 gaussian filter
+%   OUTPUT
+%         differencePatches: 3D matrix of the sequence of patches of the frame diferences
+%         meanPatches: 3D matrix of the sequence of the local gaussian average
+%   Code:
+%       here describe the code
+%%
 
 [rows, cols] = size(difference);
 difference = [zeros(1,size(difference,2));difference];

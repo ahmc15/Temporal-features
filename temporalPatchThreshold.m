@@ -1,6 +1,17 @@
 function [ differencePatchesOutput, meanPatchesOutput ] = temporalPatchThreshold( differencePatches, meanPatches )
-%Gets the patches with the sharpess patches 
+%Gets the sharpest patches 
 %   Detailed explanation goes here
+%   INPUT
+%         differencePatches: 3D matrix of the sequence of patches of the frame diferences
+%         meanPatches: 3D matrix of the sequence of the local gaussian average
+%   OUTPUT
+%         differencePatchesOutput: Sequence of the sharpest difference patches 
+%         meanPatchesOutput: Sequence of the sharpest mean patches 
+%   Code:
+%       here describe the code
+
+%%
+
 variancePatch=zeros(1,size(differencePatches,3));
 
 for i=1:size(differencePatches,3)

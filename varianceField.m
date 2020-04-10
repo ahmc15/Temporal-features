@@ -1,6 +1,22 @@
 function [ framedifferencefinal, Mediafinal, sigmafinal ] = varianceField( frame, nextframe, direction )
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%Calculates the variance field of 2 frames in a specific direction
+%   code created in march 2020 by André da Costa
+%   INPUT
+%       frame: current frame of the video file
+%       nextframe: next frame of the video file
+%       direction: direction of the diference. It can be 'horizontal',
+%       'vertical', 'diagonal1' or 'diagonal2'.
+%         
+%   OUTPUT
+%         framediffetencefinal: difference of the current frame and the
+%           next frame based on the direction
+%         Mediafinal: Average of the differences after the pass of the
+%           7x7 gaussian filter 
+%         sigmafinal: Standard deviation of the sum of all the differences
+%           between the frame difference and the average.
+%   Code:
+%
+%%
 if (nargin <3)
     error('Function requires 3 arguments');
 end
