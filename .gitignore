@@ -1,3 +1,8 @@
 #ignore all .asv file
 *.asv
+
+#ignore the teste.m file
 teste.m
+
+#ignore the LIVE database folder
+LIVE Video Quality Challenge (VQC) Database/
