@@ -6,7 +6,7 @@ function [ ggdParameters ] = ggdFitting( MSCN )
 %           number of patches. The elements of the matrices are the MSCN
 %           coefficients of the current frame.
 %   OUTPUT
-%       ggdParameters: matrix of size (2,n), where n is the
+%       ggdParameters: matrix of size (n,2), where n is the
 %           number of patches. The 2 columns are respectively the alpha and
 %           beta shape parameters of the gaussian distribution.
 %       
