@@ -16,7 +16,7 @@ video = VideoReader(videoname);
 NumFrames = floor(video.FrameRate*video.Duration);
 temporal_features = [];
 
-for tempo= 1:NumFrames-1
+for tempo= 1:NumFrames-2
     
     frame = rgb2gray(read(video,tempo)); %frame atual
     nextframe= rgb2gray(read(video,tempo+1));
