@@ -7,11 +7,12 @@ function [ Distance ] = MahalanobisDistance( MSGmodel, PristineModel)
 meanMSG = mean(MSGmodel,1);
 meanPristine = mean(PristineModel,1);
 
-covMSG = (MSGmodel);
+covMSG = cov(MSGmodel);
 covPristine = cov(PristineModel);
+covarianceterm=inv((covMSG+covPristine)/2);
+meanvector = (meanPristine-meanMSG);
+Distance = sqrt(meanvector*covarianceterm*(meanvector.'));
 
-Distance = sqrt((meanMSG-meanPristine)()^1(meanMSG-meanPristine));
-(meanMSG-meanPristine)
 
 end
 
