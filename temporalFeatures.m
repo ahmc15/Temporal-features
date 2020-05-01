@@ -13,11 +13,12 @@ function [ temporal_features ] = temporalFeatures( videoname, direction )
 %%
 
 video = VideoReader(videoname);
-NumFrames = floor(video.FrameRate*video.Duration);
+NumFrames = countframes(video);
+video = VideoReader(videoname);
 temporal_features = [];
-
-for tempo= 1:NumFrames-2
-    
+% fprintf('Number of frames %d\n',(NumFrames));
+for tempo= 1:(NumFrames-1)
+%     fprintf('Number of frames left %d\n',(NumFrames-tempo));
     frame = rgb2gray(read(video,tempo)); %frame atual
     nextframe= rgb2gray(read(video,tempo+1));
     [ difference, meanLocal, variancefield ] = varianceField( frame, nextframe, direction );
