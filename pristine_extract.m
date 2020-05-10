@@ -1,26 +1,25 @@
 % Get a list of all txt files in the current folder, or subfolders of it.
-clear all
-<<<<<<< HEAD
-direction = 'horizontal';
+% clear all
 
+% direction = 'horizontal';
 % fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\PristineVideos\*.mp4', 'ReadFcn', @importdata);
 % FileNamesMp4 = fds.Files;
 % fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\PristineVideos\*.mov', 'ReadFcn', @importdata);
 % FileNamesMov = fds.Files;
 % fullFileNames = [FileNamesMp4; FileNamesMov];
-fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Experiment1\originais\*.avi', 'ReadFcn', @importdata);
-fullFileNames = fds.Files;
-numFiles = length(fullFileNames);
+% fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Experiment1\originais\*.avi', 'ReadFcn', @importdata);
+% fullFileNames = fds.Files;
+% numFiles = length(fullFileNames);
 %Loop over all files reading them in and plotting them.
-Exp1HorizontalModel = [];
-for k = 1 : numFiles
-    fprintf('Now reading file %s. Files left %d\n', fullFileNames{k}(62:end), (numFiles-k));
-    pristine = temporalFeatures(fullFileNames{k},direction);
-    Exp1HorizontalModel  = [Exp1HorizontalModel ; pristine];
-end
+% Exp1HorizontalModel = [];
+% for k = 1 : numFiles
+%     fprintf('Now reading file %s. Files left %d\n', fullFileNames{k}(62:end), (numFiles-k));
+%     pristine = temporalFeatures(fullFileNames{k},direction);
+%     Exp1HorizontalModel  = [Exp1HorizontalModel ; pristine];
+% end
 
-save(strcat('Exp1',direction,'files.mat'),'fullFileNames','Exp1HorizontalModel');
-=======
+% save(strcat('Exp1',direction,'files.mat'),'fullFileNames','Exp1HorizontalModel');
+% =======
 % direction = 'diagonal1';
 % 
 % fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\PristineVideos\*.mp4', 'ReadFcn', @importdata);
@@ -38,19 +37,18 @@ save(strcat('Exp1',direction,'files.mat'),'fullFileNames','Exp1HorizontalModel')
 % end
 % 
 % save(strcat('PristineModel',direction,'files.mat'),'PristineModel');
-
-fds = fileDatastore('C:\Users\andre\Desktop\Temporal-features\LIVE Video Quality Challenge (VQC) Database\Video\*.mp4','ReadFcn',@importdata);
+clear all
+fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumOriginais\*.avi','ReadFcn',@importdata);
 fullFileNames = fds.Files;
 numFiles = length(fullFileNames);
-% pristinemodel=cell(numFiles,4);
-% pristinemodel = [fullFileNames,pristinemodel];
+pristinemodel=cell(numFiles,4);
+pristinemodel = [fullFileNames,pristinemodel];
 listaDirecao={'','horizontal','vertical', 'diagonal1','diagonal2'};
 for j = 2:5
     for k = 1:numFiles
-%     fprintf('Now reading file %s Files remaining:%d\n ', fullFileNames{k}(92:1:end),(numFiles-k) );
         if isempty(pristinemodel{k,j})
             try
-                fprintf('Now reading file %s; posistion=(%d,%d); %s\n ', fullFileNames{k}(92:1:end),k,j,listaDirecao{1,j});
+                fprintf('Now reading file %s; posistion=(%d,%d); %s\n ', fullFileNames{k}(63:1:end),k,j,listaDirecao{1,j});
                 pristinemodel{k,j}=temporalFeatures(pristinemodel{k,1},listaDirecao{1,j});
             catch
                 pristinemodel{k,j}='error'
@@ -59,15 +57,15 @@ for j = 2:5
             continue
         end
     end
-    end
-% Try again if it is error
+    save('PristineVarium','pristinemodel')
+end
+%% Try again if it is error
 
 for j = 2:5
     for k = 1:numFiles
-%     fprintf('Now reading file %s Files remaining:%d\n ', fullFileNames{k}(92:1:end),(numFiles-k) );
         if pristinemodel{k,j}=='error'
             try
-                fprintf('Now reading file %s; posistion=(%d,%d); %s\n ', fullFileNames{k}(92:1:end),k,j,listaDirecao{1,j});
+                fprintf('Now reading file %s; posistion=(%d,%d); %s\n ', fullFileNames{k}(63:1:end),k,j,listaDirecao{1,j});
                 pristinemodel{k,j}=temporalFeatures(pristinemodel{k,1},listaDirecao{1,j});
             catch
                 pristinemodel{k,j}='error'
@@ -76,6 +74,7 @@ for j = 2:5
             continue
         end
     end
+    save('PristineVarium','pristinemodel')
 end
-save('','pristinemodel')
->>>>>>> d08d83607df2fb9a77308ea48890ab44c479e766
+
+
