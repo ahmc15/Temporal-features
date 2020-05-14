@@ -1,13 +1,14 @@
 function [ MSCN ] = temporalMSCN( differencePatchesOutput, meanPatchesOutput, sigmafinal )
 %Computes the MSCN coefficient
-%   Detailed explanation goes here
+%   
 %   INPUT
 %         differencePatchesOutput: 3D matrix of the sequence of patches of the frame diferences
 %         meanPatchesOutput: 3D matrix of the sequence of the local gaussian average
-%         sigmafinal: standard deviation of the 
+%         sigmafinal: single value equals to the standard deviation of the
+%           entire frame
 %   OUTPUT
-%         differencePatchesOutput: 
-%         meanPatchesOutput: 
+%         MSCN: 3D array containing 2D patches and each
+%         patch contains the MSCN for the difference of two frames. 
 %   Code:
 %       here describe the code
 

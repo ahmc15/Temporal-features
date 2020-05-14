@@ -16,10 +16,9 @@ video = VideoReader(videoname);
 NumFrames = countframes(video);
 video = VideoReader(videoname);
 temporal_features = [];
-% fprintf('Number of frames %d\n',(NumFrames));
+
 for tempo= 1:(NumFrames-1)
-%     fprintf('Number of frames left %d\n',(NumFrames-tempo));
-    frame = rgb2gray(read(video,tempo)); %frame atual
+    frame = rgb2gray(read(video,tempo)); %current frame 
     nextframe= rgb2gray(read(video,tempo+1));
     [ difference, meanLocal, variancefield ] = varianceField( frame, nextframe, direction );
     [pd, pm] = temporalPatches( difference, meanLocal );

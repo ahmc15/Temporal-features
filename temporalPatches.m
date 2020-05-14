@@ -1,7 +1,7 @@
 function [ differencePatches, meanPatches ] = temporalPatches( difference, meanLocal )
 %Divides the difference and mean matrices into 96x96 patches 
 %   INPUT
-%         difference: matrix of the difference based ona certain direction
+%         difference: matrix of the difference based on a certain direction
 %         meanLocal: matrix of the local average of a 7x7 gaussian filter
 %   OUTPUT
 %         differencePatches: 3D matrix of the sequence of patches of the frame diferences

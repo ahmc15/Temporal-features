@@ -5,7 +5,7 @@ function [ framedifferencefinal, Mediafinal, sigmafinal ] = varianceField( frame
 %       frame: current frame of the video file
 %       nextframe: next frame of the video file
 %       direction: direction of the diference. It can be 'horizontal',
-%       'vertical', 'diagonal1' or 'diagonal2'.
+%           'vertical', 'diagonal1' or 'diagonal2'.
 %         
 %   OUTPUT
 %         framediffetencefinal: difference of the current frame and the
@@ -51,10 +51,9 @@ switch direction
 end
 framedif = framedif(2:end,2:end-1);
 
-gamma_filter_mask = fspecial('gaussian',7,7/6);
-gamma_filter_mask = gamma_filter_mask./sum(sum(gamma_filter_mask));
-Media = imfilter(framedif, gamma_filter_mask,'replicate');
-sigma = sqrt(sum(sum(((framedif-Media).^2),1),2));
+gamma_filter_mask = fspecial('gaussian',7,7/6);% creates 7x7 unitary gaussian filter
+Media = imfilter(framedif, gamma_filter_mask,'replicate');%averages the frame difference using the gaussian filter
+sigma = sqrt(sum(sum(((framedif-Media).^2),1),2));%the variance of the entire frame
 
 framedifferencefinal=framedif;
 Mediafinal = Media;
