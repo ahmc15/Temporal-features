@@ -2,11 +2,11 @@
 
 
 clear all
-fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumOriginais\*.avi','ReadFcn',@importdata);
+fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumDegradados\*.avi','ReadFcn',@importdata);
 fullFileNames = fds.Files;
 numFiles = length(fullFileNames);
 pristinemodel=cell(numFiles,4);
-pristinemodel = [fullFileNames,pristinemodel];
+pristinemodel = [fullFileNames,pristinemodel];%append list of names
 listaDirecao={'','horizontal','vertical', 'diagonal1','diagonal2'};
 for j = 2:5
     for k = 1:numFiles
@@ -21,7 +21,7 @@ for j = 2:5
             continue
         end
     end
-    save('PristineVarium','pristinemodel')
+    save('VariumDegradados','pristinemodel')
 end
 %% Try again if it is error
 
@@ -38,7 +38,8 @@ for j = 2:5
             continue
         end
     end
-    save('PristineVarium','pristinemodel')
+    VariumDegradados = pristinemodel;
+    save('VariumDegradados','VariumDegradados')
 end
 
 

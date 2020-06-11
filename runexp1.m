@@ -9,7 +9,7 @@ verticalmodel=[];
 diagonal1model=[];
 diagonal2model=[];
 
-load('PristineVarium.mat');
+load('.\Varium\PristineVarium.mat');
 for i=1:size(pristinemodel,1)
     horizontalmodel=[horizontalmodel;pristinemodel{i,2}];
     verticalmodel=[verticalmodel;pristinemodel{i,3}];
