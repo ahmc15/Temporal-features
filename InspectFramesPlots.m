@@ -5,7 +5,7 @@
 % 
 
 
-filePath = 'C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumDegradados\v2_1280x720_I12_pckErr5.avi';
+filePath = 'C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumDegradados\v12_1280x720_I12_pckErr5.avi';
 pausa=2;
 v = VideoReader(filePath);
 NumFrames = countframes(v);
