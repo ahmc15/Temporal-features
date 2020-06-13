@@ -32,9 +32,9 @@ pausa=2;
 % end
 %%
 L = size(Varium_SI_TI{5,3},2);
-Fs = 1000;  
+Fs = 24.9500;  
 f = Fs*(0:(L/2))/L;
-for i = 1:6:length_video
+for i = 37:6:42%1:6:length_video
     video_ref = Varium_SI_TI{i,1};
 %     figure;
     try
@@ -45,15 +45,18 @@ for i = 1:6:length_video
                 width=1250;
                 height=900;
                 set(gcf,'position',[x0,y0,width,height])
+                
             signal = Varium_SI_TI{i+k,3};%-mean(Varium_SI_TI{i+k,3});
             signorm = (signal/sqrt((signal*signal.')/size(signal,2)));
             fourier = fft(signorm);
             signal_original=fft(Varium_SI_TI{i,3});
             
-            P2 = abs(fourier/L);
+            P2 = abs(fourier/L).^2;
             P1 = P2(1:L/2+1);
             P1(2:end-1) = 2*P1(2:end-1);
+            
             plot(f,P1)
+            ylim([0 0.0004])
             title(char(Varium_SI_TI{i+k,1}))
             
         end
