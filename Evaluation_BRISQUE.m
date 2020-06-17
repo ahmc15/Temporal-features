@@ -3,27 +3,27 @@
 
 % PT-BR Script criado para a inspenção da métrica TI. Até o momento, a
 % métrica da zeina está se mostrando ineficiente em detectar degradações em
-% vídeos então calculou-se a TI na base de dados Varium. Nesse script, 
+% vídeos então calculou-se a TI na base de dados Varium. Nesse script,
 % tentou-se vários operações estatísticas para identificar o packetloss.
-% 
+%
 
 clear all
 fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumDegradados\*.avi', 'ReadFcn', @importdata);
-FileNamesavi = fds.Files;
-fullFileNames = [FileNamesavi];
-numFiles = length(fullFileNames);
-CellFeatures = cell(numFiles,1);
-VariumBrisque = [fullFileNames,CellFeatures];
+fileNamesavi = fds.Files;
+fullFileNames = [fileNamesavi];
+nFiles = length(fullFileNames);
+cellFeatures = cell(nFiles,1);
+variumBrisque = [fullFileNames,cellFeatures];
 
-for file=1:numFiles
-    if isempty(VariumBrisque{file,2})
+for ifile=1:nFiles
+    if isempty(variumBrisque{ifile,2})
         try
-            fprintf('Now reading file %s; \n ', fullFileNames{file}(64:1:end),file);
-            brisque = BrisqueVideo(VariumBrisque{numFiles,1});
-            VariumBrisque{file,2}=brisque;
+            fprintf('Now reading file %s; \n ', fullFileNames{ifile}(64:1:end));
+            brisque = BrisqueVideo(variumBrisque{nFiles,1});
+            variumBrisque{ifile,2}=brisque;
         catch
-            VariumBrisque{file,2}='error';
+            variumBrisque{ifile,2}='error';
         end
     end
 end
-save('VariumDegradadosBrisque','VariumBrisque')
+save('VariumDegradadosBrisque','variumBrisque')

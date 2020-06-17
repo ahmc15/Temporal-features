@@ -10,10 +10,10 @@ function [ ALLfeatures ] = BrisqueVideo( videoname )
 %       here describe the code
 %%
     v = VideoReader(videoname);
-    NumFrames = countframes(v);
+    NFrames = countframes(v);
     v = VideoReader(videoname);
     ALLfeatures = [];
-    for framecount =1:NumFrames
+    for framecount =1:NFrames
         frame = double(rgb2gray(read(v,framecount)));
         features = brisque_feature(frame);
         ALLfeatures = [ALLfeatures; features];
