@@ -22,7 +22,7 @@ DistancesVarium=cell(nFiles,4);
 DistancesVarium = [fullFileNames,DistancesVarium];
 
 for j=2:5
-    for k = 1 : nFiles
+    for k = 1:nFiles
         if isempty(DistancesVarium{k,j})
             try
                 fprintf('Now reading file %s; posistion=(%d,%d); %s\n ', fullFileNames{k}(64:1:end),k,j,listaDirecao{1,j});
