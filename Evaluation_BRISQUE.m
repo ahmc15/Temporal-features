@@ -8,22 +8,21 @@
 %
 
 clear all
-fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumDegradados\*.avi', 'ReadFcn', @importdata);
+fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumDegradados\*.avi', 'ReadFcn', @importdata);
 fileNamesavi = fds.Files;
 fullFileNames = [fileNamesavi];
 nFiles = length(fullFileNames);
 cellFeatures = cell(nFiles,1);
 variumBrisque = [fullFileNames,cellFeatures];
 
-for ifile=1:nFiles
-    if isempty(variumBrisque{ifile,2})
-        try
-            fprintf('Now reading file %s; \n ', fullFileNames{ifile}(64:1:end));
-            brisque = BrisqueVideo(variumBrisque{nFiles,1});
-            variumBrisque{ifile,2}=brisque;
-        catch
-            variumBrisque{ifile,2}='error';
-        end
+for ifile=1:1:nFiles
+    try
+        fprintf('Now reading file %s; \n ', fullFileNames{ifile}(74:1:end));
+        brisque = BrisqueVideo(variumBrisque{ifile,1});
+        variumBrisque{ifile,2}=brisque;
+    catch
+        variumBrisque{ifile,2}='error';
     end
+    
 end
 save('VariumDegradadosBrisque','variumBrisque')
