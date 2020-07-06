@@ -8,7 +8,7 @@
 %
 
 clear all
-fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumDegradados\*.avi', 'ReadFcn', @importdata);
+fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Databases\PristineVideos\*.mov', 'ReadFcn', @importdata);
 fileNamesavi = fds.Files;
 fullFileNames = [fileNamesavi];
 nFiles = length(fullFileNames);
@@ -23,6 +23,6 @@ for ifile=1:1:nFiles
     catch
         variumBrisque{ifile,2}='error';
     end
-    
 end
-save('VariumDegradadosBrisque','variumBrisque')
+stockvideosmov = variumBrisque;
+save('stockvideosmovBrisque','stockvideosmov')

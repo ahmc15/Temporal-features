@@ -1,5 +1,6 @@
+load('newmos.mat')
 figure() 
-scatter(newmos,(-distanciaDiagonal2),'filled')
+scatter(newmos,(-Distances(:,1)),'filled')
 title('-\DeltaD2 vs MOS')
 ylabel('-Mahalanobis Distance') 
 xlabel('MOS') 
