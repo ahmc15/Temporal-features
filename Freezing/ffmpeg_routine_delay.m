@@ -1,19 +1,14 @@
 %routine for ffmpeg
-% output = system('H:\SESQA-p563\Software\bin\p563.exe H:\audio\clean\sp01.wav -out H:\put.txt');
 clear variables;
 clc;
 %setting the parameters
-%ffmpeg='C:\Users\Helard\Dropbox\Pesquisa-Unb\Metrics\ffmpeg\bin\ffmpeg.exe';
-ffmpeg='C:\Users\hlrdb\Dropbox\Pesquisa-Unb\Metrics\ffmpeg32\ffmpeg\bin\ffmpeg.exe';
+ffmpeg='C:\Users\Adm\Desktop\ffmpeg\bin\ffmpeg.exe';
 
 %input='D:\videot\video_only2.avi';
-
-dirTest='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\plusAudio\avs\';
-%dirTest='F:\vqegMM2_library(BD2)\';
+dirTest='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\avs\';
 
 %dirOutput='D:\videot\TestConditions\av2_TestConditions_imp2\';
-dirOutput='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\plusAudio\avs\';
-
+dirOutput='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\avs\';
 D = dir (strcat(dirTest,'*.avs'));
 [nFiles, temp] = size(D);
 result=[];

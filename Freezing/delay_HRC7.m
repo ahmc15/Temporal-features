@@ -1,9 +1,10 @@
 clear variables;
 clc;
+
 %File list of avi files: files list, frame number list
 dirIN='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\';
 D = dir (strcat(dirIN,'*.avi'));
-[nFiles, temp] = size(D);
+[nFiles, ~] = size(D);
 nf=numFrames('C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\','avi');
 
 %Loading Audio
@@ -15,10 +16,10 @@ Da=dir (strcat(dirINa,'*.wav'));
 bitrateLvs=length([1]);
 
 %Output directory for processed videos (Stalling)
-dirOutput='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\hrc6\';
-
+dirOutput='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\hrc7\';
 %Output directory for avs files
 avsDirFile='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\avs\';
+
 for idx = 1:bitrateLvs:nFiles
     %Video to be processed (input)
     video1 = strcat(dirIN,D(idx).name);
@@ -30,6 +31,6 @@ for idx = 1:bitrateLvs:nFiles
     
     %Set all stalling parameters
     stn=3;
-    hrc='_HRC6';
-    processAvScript(hrc, nf(idx), dirOutput, avsDirFile, video1, audio, v_name, stn, [1 2 3], [3 3 2]);    
- end
+    hrc='_HRC7';
+    processAvScript(hrc, nf(idx), dirOutput, avsDirFile, video1, audio, v_name, stn, [1 2 3], [2 2 3]);
+end

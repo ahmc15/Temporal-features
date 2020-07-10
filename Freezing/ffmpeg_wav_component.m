@@ -3,21 +3,17 @@
 restoredefaultpath;
 clear variables;
 clc
+
 %setting the parameters
-%ffmpeg='D:\unb\pesquisa\PESQUISA\Instaladores\SOFTWARE-ffmpeg\ffmpeg\bin\ffmpeg.exe';
-ffmpeg='C:\Users\hlrdb\Dropbox\Pesquisa-Unb\Metrics\ffmpeg\bin\ffmpeg.exe';
+ffmpeg='C:\Users\Adm\Desktop\ffmpeg\bin\ffmpeg.exe';
 %input='D:\videot\video_only2.avi';
 %dirTest='C:\Users\Helard\Dropbox\Pesquisa-Unb\Metrics\Audio\db-audio\wave-files(BD2)\Ref\';
-
-dirIN='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\plusAudio\';
-
-
-
+dirIN='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\';
 D = dir (strcat(dirIN,'*.avi'));
 [nFiles, temp] = size(D);
 
 %########### LOW ################
-dirOutput='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\plusAudio\';
+dirOutput='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\';
 
 for idx = 1:nFiles
     %input1

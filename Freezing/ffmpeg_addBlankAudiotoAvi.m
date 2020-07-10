@@ -1,12 +1,10 @@
-restoredefaultpath;
+% restoredefaultpath;
 clear variables;
 clc
 
-ffmpeg='C:\Users\hlrdb\Dropbox\Pesquisa-Unb\Metrics\ffmpeg\bin\ffmpeg.exe';
-
-dirIN='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\';
-
-dirOutput='C:\Users\hlrdb\Documents\AV-Research\VARIUM-sample\plusAudio\';
+ffmpeg='C:\Users\Adm\Desktop\ffmpeg\bin\ffmpeg.exe';
+dirIN='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\';
+dirOutput='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumOriginais\plusAudio\';
 
 D = dir (strcat(dirIN,'*.avi'));
 [nFiles, temp] = size(D);
