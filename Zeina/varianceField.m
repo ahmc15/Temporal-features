@@ -54,6 +54,7 @@ framedif = framedif(2:end,2:end-1);
 gamma_filter_mask = fspecial('gaussian',7,7/6);% creates 7x7 unitary gaussian filter
 Media = imfilter(framedif, gamma_filter_mask,'replicate');%averages the frame difference using the gaussian filter
 sigma = sqrt(sum(sum(((framedif-Media).^2),1),2));%the variance of the entire frame
+% sigma         = sqrt(abs(filter2(gamma_filter_mask, framedif.*framedif, 'same') - Media.*Media));
 
 framedifferencefinal=framedif;
 Mediafinal = Media;

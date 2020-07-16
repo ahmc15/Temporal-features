@@ -14,12 +14,14 @@ function [ differencePatches, meanPatches ] = temporalPatches( difference, meanL
 difference = [zeros(1,size(difference,2));difference];
 meanLocal = [zeros(1,size(meanLocal,2));meanLocal];
 
+
 [rows, cols] = size(difference);
 borderRows = rem(rows,96)/2;
 borderCols = rem(cols,96)/2;
 
 borderlessDifference =  difference(borderRows+1:rows-borderRows, borderCols+1:cols-borderCols);
-borderlessMeanLocal =    meanLocal(borderRows+1:end-borderRows, borderCols+1:end-borderCols);
+borderlessMeanLocal  =  meanLocal(borderRows+1:end-borderRows, borderCols+1:end-borderCols);
+
 
 [brows, bcols] = size(borderlessDifference);
 listNum =(size(borderlessDifference,1)*size(borderlessDifference,2)/(96*96));
