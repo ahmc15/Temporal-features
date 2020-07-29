@@ -1,7 +1,13 @@
 close all
-pathvideo = 'Databases\Varium\VariumDegradados\v12_1280x720_I12_pckErr5.avi';
+pathvideo = 'Databases\Varium\VariumDegradados\Freezing\v12_1280_HRC7.avi';
 % pathvideo = 'Databases\Varium\VariumDegradados\v12_1280x720_I12.avi';
-
+% fds = fileDatastore('Databases\Varium\VariumDegradados\*.avi', 'ReadFcn', @importdata);
+% fileNamesavi = fds.Files;
+% fullFileNames = [fileNamesavi];
+% for file=1:size(fileNamesavi)
+% video = VideoReader(fullFileNames{file,1});
+% NumFrames = countframes(video);
+% video = VideoReader(fullFileNames{file,1});
 video = VideoReader(pathvideo);
 NumFrames = countframes(video);
 video = VideoReader(pathvideo);
@@ -20,21 +26,14 @@ tempo = 120;
     gamma_filter_mask = fspecial('gaussian',7,7/6);% creates 7x7 unitary gaussian filter
     Media             = imfilter(framedif, gamma_filter_mask,'replicate');%averages the frame difference using the gaussian filter
     sigmaZ             = sqrt(abs(filter2(gamma_filter_mask, framedif.*framedif, 'same') - Media.*Media));
+% sigmaZ = sqrt(sum(sum(((framedif-Media).^2),1),2));%the variance of the entire frame
     mscn              = (framedif-Media)./(sigmaZ+1);
-    
-    % imshow(uint8(framedif))
-    % title('Zeina diferenca dos frames')
-    % figure
-    % imshow(uint8(Media))
-    % title('Zeina media local das dif frames')
-    % figure
-    % imshow(uint8(sigmaZ))
-    % title('Zeina variancia das dif frames')
-%     figure
-    histogram(mscn,250)%,'Normalization','probability')
-%     imshow((mscn))
+    figure
+    histogramZeina =  histogram(mscn,250);%,'Normalization','probability')
     title('Zeina MSCN')
-    pause(1)
+%     title(char(strcat('Zeina',fullFileNames{file,1}(74:end))))
+%     saveas(histogramZeina,sprintf('histogramZeina_%s.jpg', fullFileNames{file,1}(74:1:end)))
+%     pause(1)
     %%
     %Brisque
     imdist = double(frame);
@@ -46,35 +45,22 @@ tempo = 120;
     imdist2 = double(nextframe);
     mu2            = imfilter( imdist2,gamma_filter_mask, 'replicate');
     mu_sq2         = mu2.*mu2;
-    sigma2         = sqrt(abs(imfilter( imdist2.*imdist2,gamma_filter_mask, 'replicate') - mu_sq));
+    sigma2         = sqrt(abs(imfilter( imdist2.*imdist2,gamma_filter_mask, 'replicate') - mu_sq2));
     structdis2     = (imdist2-mu2)./(sigma2+1);
     brisque=structdis-structdis2;
-    figure
-%     imshow((brisque))
-    histogram(brisque,250)%,'Normalization','probability')
-    title('BRISQUE DIFERENÇA DE COEFICIENTES')
-    pause(1)
-    % figure
-    % imshow(uint8(imdist))
-    % title('Brisque frame')
-    % figure
-    % imshow(uint8(mu))
-    % title('Brisque media local das dif frames')
-    % figure
-%     imshow(uint8(sigma))
-%     title('Brisque variancia das dif frames')
     
-%     x0=90;
-%     y0=90;
-%     width=1250;
-%     height=900;
-%     set(gcf,'position',get(0, 'Screensize'))
-%     
-%     subplot(1,2,1)
-%     imshow((brisque))
-% %     title('brisque  dif dos coeficientes')
-%     subplot(1,2,2)
-%     imshow((mscn))
-% %     title('Zeina mscn')
+    figure
+    histogrambrisque = histogram(structdis,250);%,'Normalization','probability')
+    title('Brisque primeiro frame')
+    figure
+    histogrambrisque = histogram(structdis2,250);
+    title('Brisque segundo frame')
+    figure
+    histogrambrisque = histogram(brisque,250);
+    title('BRISQUE DIFERENÇA DE COEFICIENTES')
+%     title(char(strcat('Brisque_',fullFileNames{file,1}(74:end))))
+%     saveas(histogrambrisque,sprintf('histogramBrisque_%s.jpg', fullFileNames{file,1}(74:1:end)))
+    %     pause(1)
+
 %     title(tempo)
 % end
