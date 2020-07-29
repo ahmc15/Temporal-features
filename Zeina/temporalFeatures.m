@@ -15,7 +15,7 @@ function [ temporal_features ] = temporalFeatures( videoname, direction )
 video = VideoReader(videoname);
 NumFrames = countframes(video);
 video = VideoReader(videoname);
-temporal_features = [];
+temporal_features = cell(NumFrames-1,1);
 
 for tempo= 1:(NumFrames-1)
     frame = rgb2gray(read(video,tempo)); %current frame 
@@ -25,7 +25,8 @@ for tempo= 1:(NumFrames-1)
     [ diff, meanPat ] = temporalPatchThreshold( pd, pm);
     [ MSCN ] = temporalMSCN( diff, meanPat, variancefield );
     [ ggdParameters ] = ggdFitting( MSCN );
-    temporal_features = [temporal_features; ggdParameters];
+%     temporal_features = [temporal_features; ggdParameters];
+    temporal_features{tempo,1} = ggdParameters;
     
 end
 
