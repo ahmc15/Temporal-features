@@ -8,7 +8,7 @@
 %
 
 clear all
-fds = fileDatastore('C:\Users\Adm\Desktop\Temporal-Features\Databases\PristineVideos\*.mov', 'ReadFcn', @importdata);
+fds = fileDatastore('D:\UnB-AVQ-2018\Exp1\*avi', 'ReadFcn', @importdata);
 fileNamesavi = fds.Files;
 fullFileNames = [fileNamesavi];
 nFiles = length(fullFileNames);
@@ -16,13 +16,17 @@ cellFeatures = cell(nFiles,1);
 variumBrisque = [fullFileNames,cellFeatures];
 
 for ifile=1:1:nFiles
+    tic
+    namefile = split(fullFileNames{ifile},'\');
     try
-        fprintf('Now reading file %s; \n ', fullFileNames{ifile}(74:1:end));
+        fprintf('Now reading file %s; \n ', namefile{end});
         brisque = BrisqueVideo(variumBrisque{ifile,1});
         variumBrisque{ifile,2}=brisque;
     catch
+        fprintf('ERROR on file file %s; \n ', namefile{end});
         variumBrisque{ifile,2}='error';
     end
+    toc
 end
-stockvideosmov = variumBrisque;
-save('stockvideosmovBrisque','stockvideosmov')
+EXP1Brisque = variumBrisque;
+save('EXP1Brisque','EXP1Brisque')

@@ -1,7 +1,7 @@
 %Script created for inspecting the brisque features of the Varium database
 close all
-clear all
-load('VariumDegradadosBrisque.mat')
+% clear all
+% load('VariumDegradadosBrisque.mat')
 lengthVideo= size(variumBrisque,1);
 salvar = true;
 for j=1:36
@@ -26,8 +26,8 @@ for j=1:36
             continue
         end
         %         pause(2)
-        if salvar
-            saveas(hax,sprintf('%sbrisque_differenceFeature%d_%s.jpg',featureDirPath,j, variumBrisque{i,1}(74:end-4)))
-        end
+%         if salvar
+%             saveas(hax,sprintf('%sbrisque_differenceFeature%d_%s.jpg',featureDirPath,j, variumBrisque{i,1}(74:end-4)))
+%         end
     end
 end
