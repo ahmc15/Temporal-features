@@ -17,7 +17,7 @@ NumFrames = countframes(video);
 video = VideoReader(videoname);
 temporal_features = cell(NumFrames-1,1);
 
-for tempo= 1:(NumFrames-1)
+parfor tempo= 1:(NumFrames-1)
     frame = rgb2gray(read(video,tempo)); %current frame 
     nextframe= rgb2gray(read(video,tempo+1));
     [ difference, meanLocal, variancefield ] = varianceField( frame, nextframe, direction );
@@ -29,4 +29,3 @@ for tempo= 1:(NumFrames-1)
     temporal_features{tempo,1} = ggdParameters;
     
 end
-
