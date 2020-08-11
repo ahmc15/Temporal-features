@@ -1,8 +1,8 @@
 clear all;
 clc;
 
-dirIN='C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumOriginais\';
-
+% dirIN='C:\Users\Adm\Desktop\Temporal-Features\Varium\VariumOriginais\';
+dirIN='C:\Users\Adm\Desktop\Temporal-Features\Databases\Varium\VariumDegradados\Freezing\';
 
 D = dir (strcat(dirIN,'*.avi'));
 [nFiles, temp] = size(D);
