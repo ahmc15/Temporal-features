@@ -1,13 +1,13 @@
 % Get a list of all txt files in the current folder, or subfolders of it.
 clear all
-fds = fileDatastore('D:\UnB-AVQ-2018\Exp1\*avi','ReadFcn',@importdata);
+fds = fileDatastore('/mnt/nas/backup_helard/Im_Exp1/*avi','ReadFcn',@importdata);
 fullFileNames = fds.Files;
 numFiles = length(fullFileNames);
-%pristinemodel=cell(numFiles,4);
-%pristinemodel = [fullFileNames,pristinemodel];%append list of names
-load('EXP1Zeina.mat')
+pristinemodel=cell(numFiles,4);
+pristinemodel = [fullFileNames,pristinemodel];%append list of names
+%load('EXP1Zeina.mat')
 listaDirecao={'','horizontal','vertical', 'diagonal1','diagonal2'};
- for j = 2:5
+ for j = 4:5
     for k = 1:numFiles
         if isempty(pristinemodel{k,j})
             try
