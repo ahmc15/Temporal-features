@@ -1,4 +1,5 @@
 % test variance Field
+clear all
 videoname = 'C:\Users\Adm\Desktop\Temporal-Features\Databases\Experiment1\v01packetloss\v01_ANC1.avi'
 video = VideoReader(videoname);
 NumFrames = countframes(video);
@@ -14,5 +15,6 @@ nextframe= rgb2gray(read(video,tempo+1));
 [ diff, meanPat ] = temporalPatchThreshold( pd, pm);
 [ MSCN ] = temporalMSCN( diff, meanPat, variancefield );
 [ ggdParameters ] = ggdFitting( MSCN );
-temporal_features{tempo,1} = ggdParameters;
+temporal_features{1,1} = ggdParameters;
 
+desktopframe2 = struct('difference',difference,'meanLocal',meanLocal,'variancefield',variancefield,'pd',pd, 'pm',pm, 'diff',diff, 'meanPat',meanPat,'MSCN',MSCN,'ggdParameters',ggdParameters, 'temporal_features',temporal_features);
