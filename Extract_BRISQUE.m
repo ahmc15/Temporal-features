@@ -8,7 +8,7 @@
 %
 
 clear all
-fds = fileDatastore('D:\UnB-AVQ-2018\Exp1\*avi', 'ReadFcn', @importdata);
+fds = fileDatastore('D:\DatabaseTemporalFeatures\Experiment1\*avi', 'ReadFcn', @importdata);
 fileNamesavi = fds.Files;
 fullFileNames = [fileNamesavi];
 nFiles = length(fullFileNames);
