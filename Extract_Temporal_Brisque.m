@@ -11,8 +11,9 @@ LimFiles = 3;
 Im_Exp1_Teste=cell(numFiles,1);
 Im_Exp1_Teste = [fullFileNames,Im_Exp1_Teste];%append list of names
 %load('Im_Exp1_Teste500to600.mat')
+ExportName = 'IVPL_Temporal_Brisque';
 
-for k = 1:numFiles 
+for k = 1:10%numFiles 
         if isempty(Im_Exp1_Teste{k,2})
             try
                 namefile = split(fullFileNames{k},'\');                
@@ -26,7 +27,7 @@ for k = 1:numFiles
             continue            
         end
         if not(mod(k,5)) %saves after completing every 5% of the total video
-            save('Im_Teste_TemporalBrisque','Im_Exp1_Teste');
+            save(ExportName ,'Im_Exp1_Teste');
         end    
-    save('Im_Teste_TemporalBrisque','Im_Exp1_Teste');
+    save(ExportName ,'Im_Exp1_Teste');
  end
